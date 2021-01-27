@@ -1,18 +1,30 @@
 import random
 
-dice_rolls = 2
-dice_sum = 0
-
 def main():
-    # tell python that dice_rolls and doce_sum are global variables
-    global dice_sum, dice_rolls
+    
+    # from the user, get the number of dice rolls to perform
+    dice_rolls = int( input('How many dice would you like to roll?') )
+    
+    # from the user, get the number of sides each dice has
+    dice_sides = int( input('How many sides are the dice?') )
+    
+    # create a variable to hold the sum of all dice rolls
+    dice_sum = 0
 
     for _ in range(0, dice_rolls):
         # generate a random number to roll a die
-        roll = random.randint(1,6)
-    
-        # print what you rolled
-        print(f'You rolled a {roll} !')
+        roll = random.randint(1,dice_sides)
+        
+        # check if the rolled value is critical fail
+        if roll == 1:
+            # print critical failure
+            print('You rolled a 1! Critical Fail')
+        elif roll == 6:
+            # print critical success
+            print('You rolled a 6! Critical Success!')
+        else:
+            # print what you rolled
+            print(f'You rolled a {roll} !')
 
         # add this value to the sum variable
         dice_sum += roll
